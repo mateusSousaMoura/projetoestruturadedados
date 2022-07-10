@@ -6,13 +6,21 @@ import java.util.Scanner;
 public class ListaEncadeada {
 
 	private No inicio, fim;
+	
+	
+	
+	public ListaEncadeada() {
+		this.inicio = null;
+		this.fim = null;
+	}
 
 	public void inserirNoInicio(String nome) throws IOException { // Para inserir no inicio preciso parar todos os
-																	// parâmetros do nó
+		boolean valor = false; 
 		No novaPessoa = new No(nome); // Aloca espaço para o novo nó
-		boolean valor = buscaNome(novaPessoa.getName());
+		if(isEmpty() == false)
+			valor = buscaNome(novaPessoa.getName());
 		if (valor == false) {
-			if (isEmpty()) { // Se a list estiver vazia o fim nó vai ser o nó atual.
+			if (isEmpty()) { // Se a lista estiver vazia o fim nó vai ser o nó atual.
 				inicio = novaPessoa;
 				fim = novaPessoa;
 				novaPessoa.proximo = null;

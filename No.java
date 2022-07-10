@@ -13,6 +13,8 @@ public class No {
         return item.getNome();
     }
 	
-	
+	public void setName(String name) {
+		this.item.setNome(name);
+	}
 
 }
