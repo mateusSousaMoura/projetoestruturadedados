@@ -1,6 +1,7 @@
 package projetoestruturadedados;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class ListaEncadeada {
 
@@ -60,16 +61,31 @@ public class ListaEncadeada {
 	
 	public void alterarNome(String nome) {
 		No auxiliar = inicio;
+		No nomes[] = null;
+		int i = 0;
 		boolean valor = false;
 		while(auxiliar.proximo != null) {
 			valor = contains(auxiliar.getName(), nome);
-			if(valor == true)
+			if(valor == true) {
 				System.out.println(auxiliar.getName());
+				nomes[i] = auxiliar;
+				i++;
+			}
 			auxiliar = auxiliar.proximo;
 		}
 		
-		if(valor==false) {
+		if(nomes.length==0) {
 			System.out.println("Nenhuma pessoa com esse nome foi encontrado");
+		} else {
+			for(int c = 0; c < nomes.length; c++) {
+				System.out.println(nomes[c].getName());
+			}
+			Scanner sc = new Scanner(System.in);
+			int choice = sc.nextInt();
+			System.out.println("Digite um novo nome para " + nomes[choice].getName());
+			String novoNome = sc.nextLine();
+			nomes[choice].setName(novoNome);
+			System.out.println("Novo nome " + nomes[choice].getName() + " atualizado com sucesso!");
 		}
 	 	
 	 }
