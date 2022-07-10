@@ -56,13 +56,20 @@ public class ListaEncadeada {
 			System.out.println("Não possível cadastrar esse nome!\nNome já encontrado no arquivo!");
 		}
 	}
-
+	
+	
 	public void alterarNome(String nome) {
 		No auxiliar = inicio;
-		boolean valor = contains(nome);
+		boolean valor = false;
+		while(auxiliar.proximo != null) {
+			valor = contains(auxiliar.getName(), nome);
+			if(valor == true)
+				System.out.println(auxiliar.getName());
+			auxiliar = auxiliar.proximo;
+		}
+		
 		if(valor==false) {
 			System.out.println("Nenhuma pessoa com esse nome foi encontrado");
-		} else {
 		}
 	 	
 	 }
