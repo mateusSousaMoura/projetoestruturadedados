@@ -1,36 +1,35 @@
 package projetoestruturadedados;
 
-
 import java.io.IOException;
 
-import projetoestruturadedados.gerenciadorarquivo.ArquivoManager;
-
 public class ListaEncadeada {
-	
-	 private No inicio, fim;
-	
-	public void inserirNoInicio(String nome) throws IOException { // Para inserir no inicio preciso parar todos os parâmetros do nó
-        No novaPessoa = new No(nome); // Aloca espaço para o novo nó
+
+	private No inicio, fim;
+
+	public void inserirNoInicio(String nome) throws IOException { // Para inserir no inicio preciso parar todos os
+																	// parâmetros do nó
+		No novaPessoa = new No(nome); // Aloca espaço para o novo nó
 		boolean valor = buscaNome(novaPessoa.getName());
-		if(valor==false) {
-	        if (isEmpty()) { // Se a list estiver vazia o fim nó vai ser o nó atual.
-	        	inicio = novaPessoa; 
-	            fim = novaPessoa;
-	            novaPessoa.proximo = null; 
-	        } else {
-	        	novaPessoa.proximo = inicio;
-	        	inicio = novaPessoa;
-	        }
-	        System.out.println("Nome cadastrado com sucesso!");
+		if (valor == false) {
+			if (isEmpty()) { // Se a list estiver vazia o fim nó vai ser o nó atual.
+				inicio = novaPessoa;
+				fim = novaPessoa;
+				novaPessoa.proximo = null;
+			} else {
+				novaPessoa.proximo = inicio;
+				inicio = novaPessoa;
+			}
+			System.out.println("Nome cadastrado com sucesso!");
 		} else {
-			System.out.println("Não possível cadastrar esse nome!\nNome já encontrado no arquivo!\nNão é permitido nomes repetidos!");
+			System.out.println(
+					"Não possível cadastrar esse nome!\nNome já encontrado no arquivo!\nNão é permitido nomes repetidos!");
 		}
 	}
-		
+
 	private boolean buscaNome(String nome) {
 		No aux = inicio;
-		while(aux.proximo != null) {
-			if(aux.getName().equalsIgnoreCase(nome)) {
+		while (aux.proximo != null) {
+			if (aux.getName().equalsIgnoreCase(nome)) {
 				return true;
 			} else {
 				aux = aux.proximo;
@@ -39,38 +38,68 @@ public class ListaEncadeada {
 		return false;
 	}
 
-	public boolean isEmpty() { 
-        return inicio == null;
-    }
-	
-	
-	/*
-	 public void inserirNoFim(String nome) {
-	        Tipono no = new Tipono(nome); // Instanciacao do novo nó
-	        String path = "Local do  meu arquivo";
-			boolean valor = buscaNome(novaPessoa.getNome(), path);
-			if(valor==false) {// se o nome não foi encontrado no arquivo
-		        if (isEmpty()) {
-		            inicio = no;
-		        } else {
-		        	fim.prox = no;
-		        }
-		        fim = no;
-		    } else {
-		    	mostre("Não possível cadastrar esse nome!\nNome já encontrado no arquivo!");
-		    }
-	    }
-	*/
-	
-	/* public void alterarNome(String nome) {
-	 *  String path = "Local do  meu arquivo";
-		boolean valor = buscaNome(novaPessoa.getNome(), path);
+	public boolean isEmpty() {
+		return inicio == null;
+	}
+
+	public void inserirNoFim(String nome) {
+		No novaPessoa = new No(nome); // Instanciacao do novo nó
+		boolean valor = buscaNome(novaPessoa.getName());
+		if (valor == false) {// se o nome não foi encontrado no arquivo
+			if (isEmpty()) {
+				inicio = novaPessoa;
+			} else {
+				fim.proximo = novaPessoa;
+			}
+			fim = novaPessoa;
+		} else {
+			System.out.println("Não possível cadastrar esse nome!\nNome já encontrado no arquivo!");
+		}
+	}
+
+	public void alterarNome(String nome) {
+		No auxiliar = inicio;
+		boolean valor = contains(nome);
 		if(valor==false) {
-			mostre("Nenhum nome "Mateus" foi encontrado");
+			System.out.println("Nenhuma pessoa com esse nome foi encontrado");
 		} else {
 		}
 	 	
 	 }
-	 */
-	
+
+	private boolean contains(String main, String Substring) {
+		boolean flag=false;
+	    if(main==null && main.trim().equals("")) {
+	        return flag;
+	    }
+	    if(Substring==null) {
+	        return flag;
+	    }
+
+	    char fullstring[]=main.toCharArray();
+	    char sub[]=Substring.toCharArray();
+	    int counter=0;
+	    if(sub.length==0) {
+	        flag=true;
+	        return flag;
+	    }
+
+	    for(int i=0;i<fullstring.length;i++) {
+
+	        if(fullstring[i]==sub[counter]) {
+	            counter++;
+	        } else {
+	            counter=0;
+	        }
+
+	        if(counter==sub.length) {
+	            flag=true;
+	            return flag;
+	        }
+
+	    }
+	    return flag;
+
+	}
+
 }
