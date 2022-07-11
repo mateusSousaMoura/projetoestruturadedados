@@ -31,7 +31,7 @@ public class ListaEncadeada {
 			System.out.println("Nome cadastrado com sucesso!");
 		} else {
 			System.out.println(
-					"Não possível cadastrar esse nome!\nNome já encontrado no arquivo!\nNão é permitido nomes repetidos!");
+					"Não possível cadastrar esse nome!\nNome já cadastrado!");
 		}
 	}
 
@@ -53,7 +53,7 @@ public class ListaEncadeada {
 	}
 
 	public void inserirNoFim(String nome) {
-		boolean valor = false; 
+		boolean valor = false; // Vamos assumir inicialmente que o valor não está na lista
 		No novaPessoa = new No(nome); // Aloca espaço para o novo nó
 		if(isEmpty() == false)
 			valor = buscaNome(novaPessoa.getName());
@@ -61,12 +61,12 @@ public class ListaEncadeada {
 			if (isEmpty()) {
 				inicio = novaPessoa;
 			} else {
-				fim.proximo = novaPessoa;
+				fim.proximo = novaPessoa; // O antigo ultimo nó agora aponta para o novo nó e esse novo nó será o novo último elemento da lista
 			}
-			fim = novaPessoa;
+			fim = novaPessoa; // Declaramos oficialmente que a novaPessoa vai ser o último elemento da lista
 			System.out.println("Nome cadastrado com sucesso!");
 		} else {
-			System.out.println("Não possível cadastrar esse nome!\nNome já encontrado no arquivo!");
+			System.out.println("Não possível cadastrar esse nome!\nNome já cadastrado!");
 		}
 	}
 	
