@@ -37,7 +37,8 @@ public class ListaEncadeada {
 
 	private boolean buscaNome(String nome) {
 		No aux = inicio;
-		while (aux.proximo != null) {
+		// aux.proximo != null
+		while (aux!=null) {
 			if (aux.getName().equalsIgnoreCase(nome)) {
 				return true;
 			} else {
@@ -52,8 +53,10 @@ public class ListaEncadeada {
 	}
 
 	public void inserirNoFim(String nome) {
-		No novaPessoa = new No(nome); // Instanciacao do novo nó
-		boolean valor = buscaNome(novaPessoa.getName());
+		boolean valor = false; 
+		No novaPessoa = new No(nome); // Aloca espaço para o novo nó
+		if(isEmpty() == false)
+			valor = buscaNome(novaPessoa.getName());
 		if (valor == false) {// se o nome não foi encontrado no arquivo
 			if (isEmpty()) {
 				inicio = novaPessoa;
@@ -61,6 +64,7 @@ public class ListaEncadeada {
 				fim.proximo = novaPessoa;
 			}
 			fim = novaPessoa;
+			System.out.println("Nome cadastrado com sucesso!");
 		} else {
 			System.out.println("Não possível cadastrar esse nome!\nNome já encontrado no arquivo!");
 		}
