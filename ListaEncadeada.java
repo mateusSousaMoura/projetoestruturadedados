@@ -71,37 +71,31 @@ public class ListaEncadeada {
 	}
 	
 	
-	public void alterarNome(String nome) {
+	public void alterarNome(String nomeAntigo, String novoNome) {
 		No auxiliar = inicio;
-		No nomes[] = null;
-		int i = 0;
 		boolean valor = false;
-		while(auxiliar.proximo != null) {
-			valor = contains(auxiliar.getName(), nome);
-			if(valor == true) {
-				System.out.println(auxiliar.getName());
-				nomes[i] = auxiliar;
-				i++;
-			}
-			auxiliar = auxiliar.proximo;
-		}
-		
-		if(nomes.length==0) {
-			System.out.println("Nenhuma pessoa com esse nome foi encontrado");
+		if(isEmpty()) {
+			System.out.println("Não é possível alterar nome\nLista vazia!");
 		} else {
-			for(int c = 0; c < nomes.length; c++) {
-				System.out.println(nomes[c].getName());
+			valor = buscaNome(nomeAntigo);
+			if(valor) {
+				while(auxiliar!=null) {
+					if(auxiliar.getName().equalsIgnoreCase(nomeAntigo)) {
+						auxiliar.setName(novoNome);
+						System.out.println("Nome alterado com sucesso!");
+						break;
+					} else {
+						auxiliar = auxiliar.proximo;
+					}
+				}
+			} else {
+				System.out.println("Esse nome que você deseja alterar não foi encontrado na lista!");
 			}
-			Scanner sc = new Scanner(System.in);
-			int choice = sc.nextInt();
-			System.out.println("Digite um novo nome para " + nomes[choice].getName());
-			String novoNome = sc.nextLine();
-			nomes[choice].setName(novoNome);
-			System.out.println("Novo nome " + nomes[choice].getName() + " atualizado com sucesso!");
 		}
 	 	
 	 }
-
+	
+	/*
 	private boolean contains(String main, String Substring) {
 		boolean flag=false;
 	    if(main==null && main.trim().equals("")) {
@@ -135,6 +129,6 @@ public class ListaEncadeada {
 	    }
 	    return flag;
 
-	}
+	}*/
 
 }
