@@ -1,0 +1,10 @@
+TRABALHO EM GRUPO
+
+DESCRIÇÃO: Listas Encadeadas. Escrever uma aplicação para criar uma lista encadeada para armazenar nomes de pessoas, com as seguintes opções:
+
+1. Inserir um nome no início da lista, sem permitir nomes repetidos; PRONTO
+2. Inserir um nome no final da lista, sem permitir nomes repetidos; PRONTO
+3. Alterar um determinado nome na lista. Se o nome não existir, uma mensagem de alerta deve ser apresentada; PRONTO
+4. Excluir ou Marcar como excluído um determinado nome, se ele estiver na lista;
+5. Mostrar todos os nomes da lista, incluindo a quantidade de nomes; PRONTO
+6. Sair da aplicação.
